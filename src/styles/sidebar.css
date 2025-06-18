@@ -1,0 +1,28 @@
+/* Custom styles for the primary color sidebar */
+.primary-sidebar-menu.ant-menu-dark {
+  background-color: var(--ant-primary-color);
+}
+
+.primary-sidebar-menu.ant-menu-dark .ant-menu-item-selected {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.primary-sidebar-menu.ant-menu-dark
+  .ant-menu-item:hover:not(.ant-menu-item-selected) {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Override Ant Design's default menu dark theme item colors */
+.primary-sidebar-menu.ant-menu-dark .ant-menu-item,
+.primary-sidebar-menu.ant-menu-dark .ant-menu-item-group-title,
+.primary-sidebar-menu.ant-menu-dark .ant-menu-item > a,
+.primary-sidebar-menu.ant-menu-dark .ant-menu-item > span > i {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* Make selected items white for better contrast */
+.primary-sidebar-menu.ant-menu-dark .ant-menu-item-selected,
+.primary-sidebar-menu.ant-menu-dark .ant-menu-item-selected > a,
+.primary-sidebar-menu.ant-menu-dark .ant-menu-item-selected > span > i {
+  color: white;
+}
