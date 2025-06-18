@@ -1,5 +1,6 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import DashboardLayout from "./layouts/DashboardLayout";
+import { ConfigProvider } from "antd";
 
 function App() {
   const queryClient = new QueryClient({
@@ -13,7 +14,20 @@ function App() {
   });
   return (
     <QueryClientProvider client={queryClient}>
-      <DashboardLayout />
+      <ConfigProvider
+        theme={{
+          token: {
+            // Seed Token
+            colorPrimary: "#6b21a8", // Changed to purple
+            borderRadius: 2,
+
+            // Alias Token
+            colorBgContainer: "#f5f3ff", // Light purple background
+          },
+        }}
+      >
+        <DashboardLayout />
+      </ConfigProvider>
     </QueryClientProvider>
   );
 }
