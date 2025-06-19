@@ -1,6 +1,6 @@
 # Antd Admin Dashboard
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+
 [![React](https://img.shields.io/badge/React-19.1.0-61dafb)](https://reactjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.8.3-blue)](https://www.typescriptlang.org/)
 [![Ant Design](https://img.shields.io/badge/Ant%20Design-5.26.1-1890ff)](https://ant.design/)
