@@ -131,7 +131,7 @@ const SideBar = ({ collapsed, setCollapsed }: SideBarProps) => {
   return (
     <div style={{ height: "100%" }}>
       <div style={logoStyle}>
-        {!collapsed && <h2 style={{ margin: 0 }}>Pesewa Admin</h2>}
+        {!collapsed && <h2 style={{ margin: 0 }}>Amrit Admin</h2>}
         {!collapsed && !screens.md && (
           <Button
             type="text"

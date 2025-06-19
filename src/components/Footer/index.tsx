@@ -9,7 +9,7 @@ const Footer = () => {
 
   return (
     <div style={footerStyle}>
-      <p>© {new Date().getFullYear()} Pesewa Admin. All rights reserved.</p>
+      <p>© {new Date().getFullYear()} Amrit Admin. All rights reserved.</p>
     </div>
   );
 };

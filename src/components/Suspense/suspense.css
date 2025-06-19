@@ -1,0 +1,53 @@
+/* Styling for the SuspenseWrapper loading container */
+.suspense-loading-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100%;
+  min-height: 300px;
+  width: 100%;
+}
+
+/* Enhance the loading text style */
+.suspense-loading-container .ant-spin-text {
+  margin-top: 16px;
+  font-size: 14px;
+  color: var(--ant-color-primary);
+}
+
+/* Customize the loading spinner */
+.suspense-loading-container .ant-spin-dot {
+  font-size: 32px;
+}
+
+/* Add a subtle animation for nicer UX */
+.suspense-loading-container .ant-spin {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Add a pulse effect to the spinner for visual interest */
+.suspense-loading-container .anticon-loading {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 1;
+  }
+}
