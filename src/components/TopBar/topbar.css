@@ -1,0 +1,24 @@
+.topbar-notification-btn:hover {
+  background-color: var(--ant-color-primary-bg);
+  color: var(--ant-color-primary);
+  transition: all 0.3s;
+}
+
+.topbar-user-dropdown {
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 8px;
+  transition: all 0.3s;
+}
+
+.topbar-user-dropdown:hover {
+  background-color: rgba(0, 0, 0, 0.04);
+}
+
+.topbar-dropdown-arrow {
+  transition: transform 0.3s;
+}
+
+.topbar-dropdown-open .topbar-dropdown-arrow {
+  transform: rotate(180deg);
+}
