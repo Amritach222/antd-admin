@@ -1,13 +1,33 @@
 {
-  "name": "amrit-admin",
-  "private": true,
-  "version": "0.0.0",
+  "name": "antd-admin",
+  "version": "0.1.0",
+  "description": "A modern admin dashboard for fintech applications built with React, TypeScript, and Ant Design",
+  "keywords": ["admin", "dashboard", "react", "typescript", "antd", "vite", "fintech"],
+  "homepage": "https://github.com/yourusername/antd-admin",
+  "bugs": {
+    "url": "https://github.com/yourusername/antd-admin/issues"
+  },
+  "license": "MIT",
+  "author": "Your Name",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amritach222/antd-admin.git"
+  },
+  "private": false,
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "format": "prettier --write \"src/**/*.{ts,tsx,css}\"",
+    "test": "echo \"No tests specified yet\" && exit 0",
+    "prepare": "husky install",
+    "postinstall": "echo \"Thank you for using Amrit Admin Dashboard!\""
+  },
+  "engines": {
+    "node": ">=18",
+    "npm": ">=8"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.80.7",
