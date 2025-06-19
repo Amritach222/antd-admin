@@ -1,5 +1,12 @@
-import type { CSSProperties, Dispatch, SetStateAction } from "react";
+import {
+  useState,
+  useEffect,
+  type CSSProperties,
+  type Dispatch,
+  type SetStateAction,
+} from "react";
 import { Menu, Grid, Button, theme } from "antd";
+import { useLocation, useNavigate } from "react-router";
 import {
   FiHome,
   FiUsers,
@@ -8,6 +15,9 @@ import {
   FiPieChart,
   FiCalendar,
   FiMenu,
+  FiLayers,
+  FiSmartphone,
+  FiCreditCard,
 } from "react-icons/fi";
 import "../../styles/sidebar.css";
 
@@ -20,8 +30,93 @@ interface SideBarProps {
 
 const SideBar = ({ collapsed, setCollapsed }: SideBarProps) => {
   const screens = useBreakpoint();
-  // Get the primary color from Ant Design's theme
+  const location = useLocation();
+  const navigate = useNavigate();
   const { token } = theme.useToken();
+
+  const [selectedKeys, setSelectedKeys] = useState<string[]>(["1"]);
+
+  const [openKeys, setOpenKeys] = useState<string[]>(() => {
+    if (location.pathname.startsWith("/services")) {
+      return ["6"];
+    }
+    return [];
+  });
+
+  useEffect(() => {
+    const pathname = location.pathname;
+
+    if (pathname === "/") {
+      setSelectedKeys(["1"]);
+    } else if (pathname.startsWith("/users")) {
+      setSelectedKeys(["2"]);
+    } else if (pathname.startsWith("/transactions")) {
+      setSelectedKeys(["3"]);
+    } else if (pathname.startsWith("/analytics")) {
+      setSelectedKeys(["4"]);
+    } else if (pathname.startsWith("/reports")) {
+      setSelectedKeys(["5"]);
+    } else if (pathname.startsWith("/services")) {
+      // Make sure Services submenu is open
+      if (!openKeys.includes("6")) {
+        setOpenKeys((prevKeys) => [...prevKeys, "6"]);
+      }
+
+      // Select the appropriate child menu based on the specific route
+      if (pathname.includes("/mobile-topup")) {
+        setSelectedKeys(["services-topup"]);
+      } else if (pathname.includes("/payments")) {
+        setSelectedKeys(["services-payment"]);
+      }
+    } else if (pathname.startsWith("/settings")) {
+      setSelectedKeys(["7"]);
+    }
+  }, [location.pathname, openKeys]);
+
+  const handleOpenChange = (keys: string[]) => {
+    setOpenKeys(keys);
+  };
+
+  const handleMenuClick = (info: { key: string }) => {
+    if (info.key === "6") {
+      return;
+    }
+
+    setSelectedKeys([info.key]);
+
+    switch (info.key) {
+      case "1":
+        navigate("/");
+        break;
+      case "2":
+        navigate("/users");
+        break;
+      case "3":
+        navigate("/transactions");
+        break;
+      case "4":
+        navigate("/analytics");
+        break;
+      case "5":
+        navigate("/reports");
+        break;
+      case "services-topup":
+        if (!openKeys.includes("6")) {
+          setOpenKeys([...openKeys, "6"]);
+        }
+        navigate("/services/mobile-topup");
+        break;
+      case "services-payment":
+        if (!openKeys.includes("6")) {
+          setOpenKeys([...openKeys, "6"]);
+        }
+        navigate("/services/payments");
+        break;
+      case "7":
+        navigate("/settings");
+        break;
+    }
+  };
 
   const logoStyle: CSSProperties = {
     height: "64px",
@@ -54,7 +149,10 @@ const SideBar = ({ collapsed, setCollapsed }: SideBarProps) => {
 
       <Menu
         mode="inline"
-        defaultSelectedKeys={["1"]}
+        selectedKeys={selectedKeys}
+        openKeys={openKeys}
+        onOpenChange={handleOpenChange}
+        onClick={handleMenuClick}
         style={{
           borderRight: 0,
           fontSize: screens.lg ? "14px" : "12px",
@@ -91,6 +189,23 @@ const SideBar = ({ collapsed, setCollapsed }: SideBarProps) => {
           },
           {
             key: "6",
+            icon: <FiLayers size={16} />,
+            label: "Services",
+            children: [
+              {
+                key: "services-topup",
+                icon: <FiSmartphone size={16} />,
+                label: "Mobile Topup",
+              },
+              {
+                key: "services-payment",
+                icon: <FiCreditCard size={16} />,
+                label: "Payments",
+              },
+            ],
+          },
+          {
+            key: "7",
             icon: <FiSettings size={16} />,
             label: "Settings",
           },

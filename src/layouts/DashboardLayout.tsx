@@ -75,7 +75,7 @@ const DashboardLayout = () => {
   };
 
   const footerStyle: CSSProperties = {
-    padding: "10px 20px",
+    padding: "0px 20px",
     backgroundColor: "#fff",
     boxShadow: "0 -1px 4px rgba(0, 0, 0, 0.1)",
   };

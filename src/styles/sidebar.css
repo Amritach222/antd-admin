@@ -8,13 +8,22 @@
 }
 
 .primary-sidebar-menu.ant-menu-dark
-  .ant-menu-item:hover:not(.ant-menu-item-selected) {
+  .ant-menu-submenu-selected
+  .ant-menu-submenu-title {
+  color: white;
+}
+
+.primary-sidebar-menu.ant-menu-dark
+  .ant-menu-item:hover:not(.ant-menu-item-selected),
+.primary-sidebar-menu.ant-menu-dark
+  .ant-menu-submenu-title:hover:not(.ant-menu-submenu-selected) {
   background-color: rgba(255, 255, 255, 0.1);
 }
 
 /* Override Ant Design's default menu dark theme item colors */
 .primary-sidebar-menu.ant-menu-dark .ant-menu-item,
 .primary-sidebar-menu.ant-menu-dark .ant-menu-item-group-title,
+.primary-sidebar-menu.ant-menu-dark .ant-menu-submenu-title,
 .primary-sidebar-menu.ant-menu-dark .ant-menu-item > a,
 .primary-sidebar-menu.ant-menu-dark .ant-menu-item > span > i {
   color: rgba(255, 255, 255, 0.85);
@@ -25,4 +34,114 @@
 .primary-sidebar-menu.ant-menu-dark .ant-menu-item-selected > a,
 .primary-sidebar-menu.ant-menu-dark .ant-menu-item-selected > span > i {
   color: white;
+}
+
+/* Style submenu items to inherit the background color */
+.primary-sidebar-menu.ant-menu-dark .ant-menu-submenu-inline > .ant-menu {
+  background-color: rgba(0, 0, 0, 0.15);
+}
+
+/* Add a subtle indicator for active submenu */
+.primary-sidebar-menu.ant-menu-dark
+  .ant-menu-submenu-open:not(.ant-menu-submenu-selected)
+  > .ant-menu-submenu-title {
+  color: white;
+}
+
+/* Improve submenu arrow icon */
+.primary-sidebar-menu.ant-menu-dark .ant-menu-submenu-arrow::before,
+.primary-sidebar-menu.ant-menu-dark .ant-menu-submenu-arrow::after {
+  background-color: rgba(255, 255, 255, 0.85);
+}
+
+.primary-sidebar-menu.ant-menu-dark
+  .ant-menu-submenu-open
+  > .ant-menu-submenu-title
+  > .ant-menu-submenu-arrow::before,
+.primary-sidebar-menu.ant-menu-dark
+  .ant-menu-submenu-open
+  > .ant-menu-submenu-title
+  > .ant-menu-submenu-arrow::after,
+.primary-sidebar-menu.ant-menu-dark
+  .ant-menu-submenu:hover
+  > .ant-menu-submenu-title
+  > .ant-menu-submenu-arrow::before,
+.primary-sidebar-menu.ant-menu-dark
+  .ant-menu-submenu:hover
+  > .ant-menu-submenu-title
+  > .ant-menu-submenu-arrow::after {
+  background-color: white;
+}
+
+/* Make sure submenu items are properly highlighted */
+.primary-sidebar-menu.ant-menu-dark .ant-menu-sub .ant-menu-item-selected {
+  background-color: rgba(255, 255, 255, 0.25);
+  color: white;
+}
+
+/* Add transition for smoother menu highlighting */
+.primary-sidebar-menu.ant-menu-dark .ant-menu-item,
+.primary-sidebar-menu.ant-menu-dark .ant-menu-submenu-title,
+.primary-sidebar-menu.ant-menu-dark .ant-menu-sub .ant-menu-item {
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Ensure submenu expanded state is visible */
+.primary-sidebar-menu.ant-menu-dark
+  .ant-menu-submenu-selected
+  > .ant-menu-submenu-title {
+  color: white;
+  font-weight: 500;
+}
+
+/* Add distinct styling for the active parent of a selected submenu item */
+.primary-sidebar-menu.ant-menu-dark
+  .ant-menu-submenu-open.ant-menu-submenu-selected
+  > .ant-menu-submenu-title {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Prevent flickering of submenu by ensuring smoother transitions */
+.primary-sidebar-menu.ant-menu-inline .ant-menu-submenu {
+  transition: height 0.3s cubic-bezier(0.645, 0.045, 0.355, 1),
+    background 0.3s cubic-bezier(0.645, 0.045, 0.355, 1),
+    padding 0.15s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.primary-sidebar-menu .ant-menu-sub {
+  transition: all 0.3s ease-in-out !important;
+}
+
+/* Improve submenu title interaction */
+.primary-sidebar-menu.ant-menu-dark .ant-menu-submenu-title {
+  user-select: none;
+  cursor: pointer;
+  padding-left: 24px !important;
+}
+
+/* Apply specific styling to the submenu container */
+.primary-sidebar-menu.ant-menu-dark .ant-menu-sub.ant-menu-inline {
+  padding-bottom: 8px;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Custom expand icon styling */
+.primary-sidebar-menu .custom-menu-expand-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.65);
+  transition: transform 0.3s;
+}
+
+.primary-sidebar-menu.ant-menu-dark
+  .ant-menu-submenu-open
+  .custom-menu-expand-icon {
+  color: white;
+}
+
+/* Ensure the Menu gives feedback when parent items are clicked */
+.primary-sidebar-menu.ant-menu-dark .ant-menu-submenu-title:active {
+  background-color: rgba(255, 255, 255, 0.15);
 }
