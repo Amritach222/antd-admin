@@ -3,7 +3,7 @@ import useScreenHeight from "../hooks/useScreenHeight";
 import SideBar from "../components/SideBar";
 import TopBar from "../components/TopBar";
 import Footer from "../components/Footer";
-import { Outlet } from "react-router";
+import { Outlet, useNavigate } from "react-router";
 import type { CSSProperties } from "react";
 import { useState, useEffect } from "react";
 
@@ -11,8 +11,11 @@ const { Header, Content, Sider, Footer: AntFooter } = Layout;
 const { useBreakpoint } = Grid;
 
 const DashboardLayout = () => {
+  const navigate = useNavigate();
   // Get the primary color from Ant Design's theme
   const { token } = theme.useToken();
+
+  const isAuthenticated = false; // Replace with actual authentication logic
 
   const screenHeight = useScreenHeight();
   const [collapsed, setCollapsed] = useState(() => {
@@ -76,6 +79,10 @@ const DashboardLayout = () => {
     backgroundColor: "#fff",
     boxShadow: "0 -1px 4px rgba(0, 0, 0, 0.1)",
   };
+
+  if (!isAuthenticated) {
+    navigate("/signin");
+  }
 
   return (
     <Layout style={layoutStyle}>
