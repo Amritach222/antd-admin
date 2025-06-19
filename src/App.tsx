@@ -22,7 +22,7 @@ function App() {
             // borderRadius: 5,
 
             // Alias Token
-            colorBgContainer: "#f5f3ff", // Light purple background
+            // colorBgContainer: "#f5f3ff", // Light purple background
           },
         }}
       >

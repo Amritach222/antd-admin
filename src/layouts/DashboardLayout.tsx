@@ -15,7 +15,7 @@ const DashboardLayout = () => {
   // Get the primary color from Ant Design's theme
   const { token } = theme.useToken();
 
-  const isAuthenticated = false; // Replace with actual authentication logic
+  const isAuthenticated = true; // Replace with actual authentication logic
 
   const screenHeight = useScreenHeight();
   const [collapsed, setCollapsed] = useState(() => {
